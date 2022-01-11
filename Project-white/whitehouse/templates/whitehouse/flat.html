@@ -1,0 +1,48 @@
+
+    {% extends "whitehouse/barra.html"%}
+
+    {% block content %}
+
+    <div class="container mt-3"><p>lalala</p></div>
+
+    <nav class="navbar navbar-light bg-light justify-content-center">
+      <form class="form-inline">
+              {% for vivienda in vivienda %}    
+                {% for h in vivienda.categoria.all %} 
+                  <a class="btn btn-sm btn-outline-secondary" href="{% url 'flat' h.id %}" role="button">{{h.nombre}}</a>
+                {% endfor %}                 
+              {% endfor %}
+              <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}" role="button">back</a>
+
+        <button class="btn btn-outline-success" type="button">Main button</button>      
+
+      </form>
+    </nav>
+
+
+
+
+    <div class="row row-cols-1 row-cols-md-3 g-4"data-masonry='{"percentPosition": true }'>
+      {% for vivienda in vivienda %}
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{vivienda.foto1.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ vivienda.nombre }}</h5>
+            <p class="card-text">{{ vivienda.descripcion }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{vivienda.direccion}}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  
+    
+{% endblock %}
+
+
+    

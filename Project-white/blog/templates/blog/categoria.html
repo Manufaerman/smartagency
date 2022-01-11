@@ -1,0 +1,46 @@
+{% extends "whitehouse/barra.html"%}
+
+
+{% block content%}
+<div class="container mt-3"><p>lalala</p></div>
+
+<div class="row mt-3 p-3">
+    <div class="col-3 mx-auto">
+        <ul class="list-group list-group-horizontal">
+            {% for blog in blog %}
+              {% for categoria in blog.categorias.all%}
+
+              <a class="btn btn-sm btn-outline-secondary" href="{% url 'categoria' categoria.id %}" role="button">{{categoria.nombre}}</a>
+
+              {% endfor %}
+            {% endfor %}
+            <a class="btn btn-outline-dark" href="{% url 'blog' %}" role="button">Back</a>    
+
+            
+            
+          </ul>
+
+    </div>
+    
+
+
+</div>
+        <div class="row row-cols-1 row-cols-md-3 g-4"data-masonry='{"percentPosition": true }'>
+            {% for blog in blog %}
+            <div class="col">
+              <div class="card h-100">
+                <img src="{{blog.imagen.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ blog.titulo }}</h5>
+                  <p class="card-text">{{ blog.contenido }}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">{{blog.created}}{{blog.updated}}</small>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

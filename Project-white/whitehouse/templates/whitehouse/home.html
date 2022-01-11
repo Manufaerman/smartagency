@@ -1,0 +1,61 @@
+
+{% extends "whitehouse/barra.html"%}
+
+    {% load static%}
+    {% block content %}
+    
+    <div class="container mt-3"><p>lalala</p></div>
+
+    <nav class="navbar navbar-light bg-light justify-content-center">
+      <form class="form-inline">
+                {% for articulo in articulo %}
+                  {% for categorias in articulo.categoria.all %} 
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'flat' categorias.id %}" role="button">{{categorias.nombre}}</a>
+                  {% endfor %}           
+                {% endfor %}
+                
+                    
+        <button class="btn btn-outline-success" type="button">Main button</button>
+        
+      </form>
+    </nav>
+
+            <div class="row row-cols-1 row-cols-md-4 g-4"data-masonry='{"percentPosition": true }'>
+                {% for articulo in articulo %}
+                <div class="col">
+                  <div class="card h-100">
+                    <img src="{{articulo.foto1.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ articulo.nombre }}</h5>
+                      <p class="card-text">{{ articulo.descripcion }}</p>
+                      <a href="{% url 'description' articulo.id %}" class="btn btn-primary">more</a>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                <div class="card text-white bg-dark ">
+                    <div class="card-header">News</div>
+                    <div class="card-body">
+                      <h5 class="card-title">Cryptos</h5>
+                      <p class="card-text">En poco tiempo podras pagar tu estadia en cripto monedas. =).</p>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+            
+
+            
+            </div>
+
+            <p> {{num_visits}} holaaaaaa</p>
+
+    
+{% endblock %}
+
+
+    

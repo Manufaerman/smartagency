@@ -1,0 +1,42 @@
+{% extends "whitehouse/barra.html"%}
+{% load static%}
+{% block content %}
+
+<div class ="mt-3 !important"><p>holas</p></div>
+
+<div class="hola">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Alquila y olvidate</h1>
+      <p class="lead">Contactanos y te informaremos sin ningun tipo de compromiso</p>
+    </div>
+  </div>
+
+</div>
+
+
+  <div class="text-center p-3">
+   
+    
+    <div class="contenedorformulario">
+    
+        {% if "valido" in request.GET %}
+
+        <p>informacion enviada correctamente</p>
+        
+        {% endif%}
+        <form action="" method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <table style="margin: auto;">
+                {{formcontacto.as_table}}
+            </table>
+            <input type="submit" value="send" style="width: 150px;" >
+        </form>
+       
+    </div>
+    
+  </div>
+  <p>{{request.POST}}</p>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+/{% extends "whitehouse/barra.html"%}
+
+{% load static%}
+
+{% block content %}
+
+  
+ 
+  <div class="text-center p-3">
+    <div class="hola">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Alquila y olvidate.</h1>
+          <p class="lead">Cobra el día 5 de cada mes pase lo que pase</p>
+        </div>
+      </div>
+
+  </div>
+
+
+
+    {% for servicio in servicios %}
+    <div class="card mb-3">
+      <img class="card-img-top" src="{{servicio.imagen.url}}" alt="Card image cap">
+      <div class="card-body text-center">
+        <h1 class="card-title">{{servicio.nombre}}</h1>
+        <p class="card-text">{{servicio.contenido}}</p>
+        <p><a href="/servicios/{{ servicio.nombre }}/" class="btn btn-primary">Start</a></p> 
+        <p class="card-text"><small class="text-muted">{{servicio.created}}</small></p>
+      </div>
+    </div>
+    {% endfor%}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "whitehouse/barra.html" %}
+
+{% block content %}
+<div class="container mt-3"><p>lalala</p></div>
+
+<h1>Borrowed flats</h1>
+
+
+{% if reservas_list %}
+<ul>
+
+  {% for bookinst in reservas_list %}
+  <li class="{% if bookinst.is_booked %}text-danger{% endif %}">
+  <a href="">{{bookinst.vivienda}}{{bookinst.fecha_entrada}}{{bookinst.fecha_salida}}</li>
+  {% endfor %}
+</ul>
+
+{% else %}
+  <p>There are no books borrowed.</p>
+{% endif %}
+
+{% endblock %}
